@@ -13,13 +13,26 @@
 	<dd class="col-10">
     @if (string.IsNullOrEmpty(Model.Hinh))
     {
-        <a class="btn btn-primary" asp-controller="Hocvien" asp-action="add">Thêm</a>
+		<form method="post" asp-action="selectImg" enctype="multipart/form-data">
+			<div class="mb-3">
+				<input type="file" id="img" name="img" class="form-control" />
+				<input type="hidden" id="mshv" name="mshv" value="@Model.Mshv" />
+			</div>
+			<div class="mb-3">
+				<button type="submit" class="btn btn-primary">Xác nhận</button>
+			</div>
+		</form>
+		
     }
     else
     {
-        <img src="@Url.Content(resource)" height="180" width="150" />
-        <a class="btn btn-danger" asp-controller="Hocvien" asp-action="delete">Xóa</a>
-    }
+		<div class="mb-3">
+			<img src="@Url.Content(resource)" height="180" width="150" />
+        </div>
+		<div class="mb-3">
+		<	a class="btn btn-danger" asp-controller="Hocvien" asp-action="deleteImg">Xóa</	a>
+		</div>
+	}
 	</dd>
 
 </dl>
