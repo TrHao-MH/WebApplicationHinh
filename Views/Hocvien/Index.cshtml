@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Hocvien>
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Quản lý loại học viên</h1>
+<a class="btn btn-primary" asp-controller="LoaiHangHoa" asp-action="Add">Thêm</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>STT</th>
+			<th>Mã Học viên</th>
+			<th>Tên Học viên</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@{int stt = 1; }
+		@foreach(Hocvien hv in Model)
+		{
+			<tr>
+				<td>@(stt++)</td>
+				<td>@hv.Mshv</td>
+				<td>@hv.Tenhv</td>
+				<td>
+					<a class="btn btn-primary" asp-action="detail" asp-controller="Hocvien" asp-route-id="@hv.Mshv">Chi Tiết</a>	
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

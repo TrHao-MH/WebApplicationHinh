@@ -1,0 +1,25 @@
+﻿@model Hocvien
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	string resource = "~/resource/"+Model.Hinh;
+}
+<h1>Thông tin học viên</h1>
+<dl class="row">
+	<dt class="col-2">Mã học viên</dt>
+	<dd class="col-10">@Model.Mshv</dd>
+	<dt class="col-2">Tên học viên</dt>
+	<dd class="col-10">@Model.Tenhv</dd>
+	<dt class="col-2">Hình ảnh</dt>
+	<dd class="col-10">
+    @if (string.IsNullOrEmpty(Model.Hinh))
+    {
+        <a class="btn btn-primary" asp-controller="Hocvien" asp-action="add">Thêm</a>
+    }
+    else
+    {
+        <img src="@Url.Content(resource)" height="180" width="150" />
+        <a class="btn btn-danger" asp-controller="Hocvien" asp-action="delete">Xóa</a>
+    }
+	</dd>
+
+</dl>
